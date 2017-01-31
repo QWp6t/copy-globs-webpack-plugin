@@ -1,0 +1,23 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+- 6
+- 7
+cache:
+  yarn: true
+  directories:
+  - node_modules
+script:
+- yarn run build
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: hi@qwp6t.me
+  api_key:
+    secure: zG2/DePXazRwMwFG6Nt8NHJ5H3LKO5nLnXLFUv8+qZE6jH0z0c3rAhLylVykx0lA5LGla9IZ/aSrNmdj8tnIIafaHvEtI+NDSgyY3UdsWu5Knm7Pf5KdwB0j4LpenjA7Rcl5/pJ7w8jbHggX0uWGt4D5+Pb5c+FIWdLcIOHqyV9cxUqcwGt2kwE02DGEwhlD4WIcYnI216nxjESV7pQFKR9vmlDNDHcWZsKSqWFh4ROoLdXiI2w7WHxpdLVObtiQdGpP+u+QQgt/ZPvFz4KjuEgx66LtNESoisjqXLzMSS/wf9JoascCmeftMttc0tij7rc3OivuemaRTFfj3Zzl2ApJ1S8ye3iIaJMfE/TARwM2p9o5e/5YHEuF/Bt88+FlZ3UGGU8n9UFinBPhD1TadhPJHq/ptVATPy1tj9WjozvCw0CFCFCIkM5PzjqtVfaeA3ldg9zi85NeZpKR14nqFUnwrXepQ+u+9TAE3jAGvNKPyYPdCkyhPF0y3Em2aE/YkkgWPOqcUe9IeWp+chcUTNPzVnrOkCNN1d90Ahr4VJe7t9bfUN7YSkeae9kcBoXhDLTbwo/eqq42WU/DT3T65GMkC9A5PnRqlfXmEMsFMvjgOYMbiHLzrZNzzxgn4kPUStvVZJROX88Rz42B0U6/FH+mdTK56Al2xB3h4i88/FY=
+  on:
+    tags: true
+notifications:
+  email:
+    on_success: always
