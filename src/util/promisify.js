@@ -13,9 +13,9 @@
  * @return {Promise} - An instance of Promise
  */
 module.exports = (callback, thisArg) => function () {
-  const args = [].slice.call(arguments);
-  return new Promise((resolve, reject) => {
-    args.push((err, data) => (err === null ? resolve(data) : reject(err)));
-    return callback.apply(thisArg, args);
-  });
+	const args = [].slice.call(arguments);
+	return new Promise((resolve, reject) => {
+		args.push((err, data) => (err === null ? resolve(data) : reject(err)));
+		return callback.apply(thisArg, args);
+	});
 };

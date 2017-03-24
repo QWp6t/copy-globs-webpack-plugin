@@ -1,33 +1,54 @@
 {
-  "name": "copy-globs-webpack-plugin",
-  "version": "0.1.0",
-  "description": "Webpack plugin to copy static files ezpz.",
-  "main": "index.js",
-  "repository": "https://github.com/qwp6t/copy-globs-webpack-plugin.git",
-  "author": "QWp6t",
-  "license": "OSL-3.0",
-  "dependencies": {
-    "glob": "^7.1.1",
-    "loader-utils": "^0.2.16"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "memory-fs": "^0.4.1",
-    "mkdirp": "^0.5.1",
-    "mocha": "^3.2.0",
-    "randomstring": "^1.1.5",
-    "semistandard": "^9.2.1",
-    "webpack": "2.2.1"
-  },
-  "scripts": {
-    "prebuild": "npm run lint",
-    "build": "webpack --config=build/config.js",
-    "lint": "semistandard src/* test/*",
-    "pretest": "npm run build",
-    "test": "mocha --colors",
-    "test:report": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
-    "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
-    "prepublish": "npm test"
-  }
+	"name": "copy-globs-webpack-plugin",
+	"version": "0.1.0",
+	"description": "Webpack plugin to copy static files ezpz.",
+	"main": "index.js",
+	"repository": "https://github.com/qwp6t/copy-globs-webpack-plugin.git",
+	"author": "QWp6t",
+	"license": "OSL-3.0",
+	"xo": {
+		"env": { "node": true, "es6": true },
+		"parserOptions": {
+			"ecmaVersion": 2017,
+			"sourceType": "module"
+		},
+		"rules": {
+			"unicorn/filename-case": 0,
+			"object-curly-spacing": [2, "always"],
+			"brace-style": [2, "1tbs", { "allowSingleLine": true }],
+			"capitalized-comments": [0, "never"]
+		}
+	},
+	"babel": {
+		"presets": [
+			["env", { "targets": { "node": 6.10 } }]
+		],
+		"comments": false
+	},
+	"jest": {
+		"coverageDirectory": "coverage"
+	},
+	"dependencies": {
+		"chokidar":"^1.6.1",
+		"glob": "^7.1.1",
+		"loader-utils": "^1.1.0"
+	},
+	"devDependencies": {
+		"babel-core": "^6.24.0",
+		"babel-jest": "^19.0.0",
+		"babel-preset-env": "^1.2.2",
+		"jest": "^19.0.2",
+		"module-concat": "^2.1.2",
+		"webpack": "2.3.1",
+		"xo": "^0.18.0"
+	},
+	"scripts": {
+		"prebuild": "npm run lint && npm test",
+		"build": "node build/build.js",
+		"lint": "xo src/* test/* build/*",
+		"test": "jest",
+		"coverage": "jest --coverage",
+		"start": "jest --watch --notify",
+		"prepublish": "npm build"
+	}
 }
