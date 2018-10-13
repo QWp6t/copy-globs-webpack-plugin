@@ -2,10 +2,10 @@ dist: trusty
 sudo: false
 language: node_js
 node_js:
-- 6
+  - 6
 cache: yarn
 script:
-- yarn build
+  - yarn build
 deploy:
   provider: npm
   skip_cleanup: true
